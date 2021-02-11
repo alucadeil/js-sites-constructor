@@ -1,7 +1,7 @@
 import {col, css, row} from "../utils";
 
 class Block {
-    constructor( value, options) {
+    constructor( value, options = {}) {
         this.value = value
         this.options = options
     }
@@ -29,7 +29,8 @@ export class TextBlock extends Block {
     }
 
     toHTML() {
-        return row(col(`<p>${this.value}</p>`))
+
+        return row(col(`<p>${this.value}</p>`), css(this.options.styles))
     }
 }
 
@@ -49,6 +50,7 @@ export class ImageBlock extends Block {
     }
 
     toHTML() {
+
         return row(`<img src="${this.value}" alt="" style="width: 286px">`)
     }
 }
